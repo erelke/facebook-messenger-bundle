@@ -1,6 +1,6 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\Tests\Service;
+namespace Erelke\FacebookMessengerBundle\Tests\Service;
 
 use Facebook\Exceptions\FacebookSDKException;
 use GuzzleHttp\Client;
@@ -11,12 +11,12 @@ use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use PouleR\FacebookMessengerBundle\Core\Configuration\GetStartedConfiguration;
-use PouleR\FacebookMessengerBundle\Core\Configuration\GreetingTextConfiguration;
-use PouleR\FacebookMessengerBundle\Core\Entity\Recipient;
-use PouleR\FacebookMessengerBundle\Core\Message;
-use PouleR\FacebookMessengerBundle\Exception\FacebookMessengerException;
-use PouleR\FacebookMessengerBundle\Service\FacebookMessengerService;
+use Erelke\FacebookMessengerBundle\Core\Configuration\GetStartedConfiguration;
+use Erelke\FacebookMessengerBundle\Core\Configuration\GreetingTextConfiguration;
+use Erelke\FacebookMessengerBundle\Core\Entity\Recipient;
+use Erelke\FacebookMessengerBundle\Core\Message;
+use Erelke\FacebookMessengerBundle\Exception\FacebookMessengerException;
+use Erelke\FacebookMessengerBundle\Service\FacebookMessengerService;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Symfony\Component\HttpFoundation\Request as SymRequest;

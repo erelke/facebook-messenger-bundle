@@ -1,6 +1,6 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\DependencyInjection;
+namespace Erelke\FacebookMessengerBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -25,7 +25,7 @@ class FacebookMessengerExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        $definition = $container->getDefinition('pouler.facebookmessenger.service');
+        $definition = $container->getDefinition('erelke.facebookmessenger.service');
         $definition->replaceArgument(0, $config['app_id']);
         $definition->replaceArgument(1, $config['app_secret']);
     }
@@ -35,6 +35,6 @@ class FacebookMessengerExtension extends Extension
      */
     public function getAlias()
     {
-        return 'pouler_facebook_messenger';
+        return 'erelke_facebook_messenger';
     }
 }

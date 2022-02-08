@@ -1,6 +1,6 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\Core\Callback;
+namespace Erelke\FacebookMessengerBundle\Core\Callback;
 
 /**
  * Class SenderCallback.

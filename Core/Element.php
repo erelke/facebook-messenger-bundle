@@ -1,6 +1,6 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\Core;
+namespace Erelke\FacebookMessengerBundle\Core;
 
 /**
  * Class Element.

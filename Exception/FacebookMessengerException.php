@@ -1,10 +1,12 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\Exception;
+namespace Erelke\FacebookMessengerBundle\Exception;
+
+use Exception;
 
 /**
  * Class FacebookMessengerException.
  */
-class FacebookMessengerException extends \Exception
+class FacebookMessengerException extends Exception
 {
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\Core\Button;
+namespace Erelke\FacebookMessengerBundle\Core\Button;
 
-use PouleR\FacebookMessengerBundle\Core\Button;
-use PouleR\FacebookMessengerBundle\Core\ButtonInterface;
+use Erelke\FacebookMessengerBundle\Core\Button;
+use Erelke\FacebookMessengerBundle\Core\ButtonInterface;
 
 /**
  * Class LogoutButton

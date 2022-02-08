@@ -1,8 +1,8 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\Core\Element;
+namespace Erelke\FacebookMessengerBundle\Core\Element;
 
-use PouleR\FacebookMessengerBundle\Core\Element;
+use Erelke\FacebookMessengerBundle\Core\Element;
 
 /**
  * Class ReceiptElement.

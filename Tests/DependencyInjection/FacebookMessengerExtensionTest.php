@@ -1,9 +1,9 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\Tests\DependencyInjection;
+namespace Erelke\FacebookMessengerBundle\Tests\DependencyInjection;
 
 use PHPUnit\Framework\TestCase;
-use PouleR\FacebookMessengerBundle\DependencyInjection\FacebookMessengerExtension;
+use Erelke\FacebookMessengerBundle\DependencyInjection\FacebookMessengerExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
@@ -23,7 +23,7 @@ class FacebookMessengerExtensionTest extends TestCase
         $extension->load($config, $container);
 
         // Test if arguments are overwritten with default values from config
-        $definition = $container->getDefinition('pouler.facebookmessenger.service');
+        $definition = $container->getDefinition('erelke.facebookmessenger.service');
         $arguments = $definition->getArguments();
 
         self::assertEquals('fb_app_id', $arguments[0]);

@@ -1,9 +1,9 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\Tests\DependencyInjection;
+namespace Erelke\FacebookMessengerBundle\Tests\DependencyInjection;
 
 use PHPUnit\Framework\TestCase;
-use PouleR\FacebookMessengerBundle\Client\FailedMessageRequest;
+use Erelke\FacebookMessengerBundle\Client\FailedMessageRequest;
 
 /**
  * Class FailedMessageRequestTest

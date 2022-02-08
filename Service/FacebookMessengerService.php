@@ -1,19 +1,19 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\Service;
+namespace Erelke\FacebookMessengerBundle\Service;
 
 use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
 use Facebook\FacebookBatchRequest;
 use Facebook\FacebookResponse;
 use GuzzleHttp\Client;
-use PouleR\FacebookMessengerBundle\Client\FailedMessageRequest;
-use PouleR\FacebookMessengerBundle\Client\Guzzle6HttpClient;
-use PouleR\FacebookMessengerBundle\Core\Configuration\GetStartedConfiguration;
-use PouleR\FacebookMessengerBundle\Core\Configuration\GreetingTextConfiguration;
-use PouleR\FacebookMessengerBundle\Core\Entity\Recipient;
-use PouleR\FacebookMessengerBundle\Core\Message;
-use PouleR\FacebookMessengerBundle\Exception\FacebookMessengerException;
+use Erelke\FacebookMessengerBundle\Client\FailedMessageRequest;
+use Erelke\FacebookMessengerBundle\Client\Guzzle6HttpClient;
+use Erelke\FacebookMessengerBundle\Core\Configuration\GetStartedConfiguration;
+use Erelke\FacebookMessengerBundle\Core\Configuration\GreetingTextConfiguration;
+use Erelke\FacebookMessengerBundle\Core\Entity\Recipient;
+use Erelke\FacebookMessengerBundle\Core\Message;
+use Erelke\FacebookMessengerBundle\Exception\FacebookMessengerException;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;

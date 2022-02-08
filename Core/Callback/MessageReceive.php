@@ -1,9 +1,9 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\Core\Callback;
+namespace Erelke\FacebookMessengerBundle\Core\Callback;
 
-use PouleR\FacebookMessengerBundle\Core\Attachment;
-use PouleR\FacebookMessengerBundle\Core\AttachmentInterface;
+use Erelke\FacebookMessengerBundle\Core\Attachment;
+use Erelke\FacebookMessengerBundle\Core\AttachmentInterface;
 
 /**
  * Class MessageReceive.

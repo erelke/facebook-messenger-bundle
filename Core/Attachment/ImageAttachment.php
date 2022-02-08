@@ -1,8 +1,8 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\Core\Attachment;
+namespace Erelke\FacebookMessengerBundle\Core\Attachment;
 
-use PouleR\FacebookMessengerBundle\Core\Attachment;
+use Erelke\FacebookMessengerBundle\Core\Attachment;
 
 /**
  * Class ImageAttachment.

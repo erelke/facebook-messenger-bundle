@@ -1,8 +1,8 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle;
+namespace Erelke\FacebookMessengerBundle;
 
-use PouleR\FacebookMessengerBundle\DependencyInjection\FacebookMessengerExtension;
+use Erelke\FacebookMessengerBundle\DependencyInjection\FacebookMessengerExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\DependencyInjection;
+namespace Erelke\FacebookMessengerBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -15,12 +15,12 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('pouler_facebook_messenger');
+        $treeBuilder = new TreeBuilder('erelke_facebook_messenger');
         if (method_exists($treeBuilder, 'getRootNode')) {
             $rootNode = $treeBuilder->getRootNode();
         } else {
             // BC layer for symfony/config 4.1 and older
-            $rootNode = $treeBuilder->root('pouler_facebook_messenger');
+            $rootNode = $treeBuilder->root('erelke_facebook_messenger');
         }
 
         $rootNode

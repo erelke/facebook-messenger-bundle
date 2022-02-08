@@ -1,6 +1,6 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\Core\Configuration;
+namespace Erelke\FacebookMessengerBundle\Core\Configuration;
 
 /**
  * Interface ConfigurationInterface.

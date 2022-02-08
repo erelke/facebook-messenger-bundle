@@ -1,8 +1,8 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\Core;
+namespace Erelke\FacebookMessengerBundle\Core;
 
-use PouleR\FacebookMessengerBundle\Core\QuickReply\QuickReplies;
+use Erelke\FacebookMessengerBundle\Core\QuickReply\QuickReplies;
 
 /**
  * Class QuickReply.

@@ -1,10 +1,10 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\Core\Template;
+namespace Erelke\FacebookMessengerBundle\Core\Template;
 
-use PouleR\FacebookMessengerBundle\Core\Payload\TemplatePayload;
-use PouleR\FacebookMessengerBundle\Core\Entity\Address;
-use PouleR\FacebookMessengerBundle\Core\Entity\Summary;
+use Erelke\FacebookMessengerBundle\Core\Payload\TemplatePayload;
+use Erelke\FacebookMessengerBundle\Core\Entity\Address;
+use Erelke\FacebookMessengerBundle\Core\Entity\Summary;
 
 /**
  * Class ReceiptTemplatePayload.

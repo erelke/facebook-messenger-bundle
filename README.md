@@ -1,11 +1,5 @@
 Facebook Messenger Bundle
 =====================
-[![Build Status](https://travis-ci.org/PouleR/facebook-messenger-bundle.svg?branch=master)](https://travis-ci.org/PouleR/facebook-messenger-bundle)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/d73f014e-f193-4c88-a6e0-77f9323d3440/mini.png)](https://insight.sensiolabs.com/projects/d73f014e-f193-4c88-a6e0-77f9323d3440)
-
-[![Latest Stable Version](https://poser.pugx.org/pouler/facebook-messenger-bundle/v/stable)](https://packagist.org/packages/pouler/facebook-messenger-bundle)
-[![Total Downloads](https://poser.pugx.org/pouler/facebook-messenger-bundle/downloads)](https://packagist.org/packages/pouler/facebook-messenger-bundle)
-[![Latest Unstable Version](https://poser.pugx.org/pouler/facebook-messenger-bundle/v/unstable)](https://packagist.org/packages/pouler/facebook-messenger-bundle)
 
 A PHP Facebook Messenger API for the Symfony framework.
 
@@ -14,7 +8,7 @@ A PHP Facebook Messenger API for the Symfony framework.
 ### Step 1: Download Bundle
 
 ```bash
-$ composer require pouler/facebook-messenger-bundle
+$ composer require erelke/facebook-messenger-bundle
 ```
 
 ### Step 2: Enable the bundle (Symfony 2/3)
@@ -29,7 +23,7 @@ public function registerBundles()
 {
     $bundles = array(
         // ...
-        new PouleR\FacebookMessengerBundle\FacebookMessengerBundle(),
+        new Erelke\FacebookMessengerBundle\FacebookMessengerBundle(),
     );
 }
 ```
@@ -38,7 +32,7 @@ public function registerBundles()
 
 Edit your `config.yml` with the following configuration:
     
-    pouler_facebook_messenger:
+    erelke_facebook_messenger:
 		app_id: 'YourFBMessengerAppId'
 		app_secret: 'YourFBMessengerAppSecret'
 		

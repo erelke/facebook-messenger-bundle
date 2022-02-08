@@ -1,8 +1,8 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\Core\Template;
+namespace Erelke\FacebookMessengerBundle\Core\Template;
 
-use PouleR\FacebookMessengerBundle\Core\Payload\TemplatePayload;
+use Erelke\FacebookMessengerBundle\Core\Payload\TemplatePayload;
 
 /**
  * Class GenericTemplatePayload.

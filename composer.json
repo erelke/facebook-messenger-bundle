@@ -1,9 +1,9 @@
 {
-    "name": "pouler/facebook-messenger-bundle",
+    "name": "erelke/facebook-messenger-bundle",
     "description": "A Symfony bundle for Facebook Messenger",
     "type": "symfony-bundle",
     "autoload": {
-        "psr-4": { "PouleR\\FacebookMessengerBundle\\": "" }
+        "psr-4": { "Erelke\\FacebookMessengerBundle\\": "" }
     },
     "require": {
         "php": ">=7.1",

@@ -1,6 +1,6 @@
 <?php
 
-namespace PouleR\FacebookMessengerBundle\Client;
+namespace Erelke\FacebookMessengerBundle\Client;
 
 /**
  * Class FailedMessageRequest
