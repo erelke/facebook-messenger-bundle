@@ -238,7 +238,7 @@ class FacebookMessengerServiceTest extends TestCase
                 'subscribe',
                 '12345'
             );
-	    $this->expectException(FacebookMessengerException::class);
+        $this->expectException(FacebookMessengerException::class);
         $this->messengerService->handleVerificationToken($request, '98765');
     }
 
@@ -290,7 +290,7 @@ class FacebookMessengerServiceTest extends TestCase
      */
     public function testSendBatchRequestsException()
     {
-	    $this->expectException(FacebookMessengerException::class);
+        $this->expectException(FacebookMessengerException::class);
         // No batch requests added
         $this->messengerService->sendBatchRequests();
     }

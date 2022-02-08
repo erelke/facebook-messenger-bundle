@@ -2,6 +2,7 @@
 
 namespace Erelke\FacebookMessengerBundle\Tests\DependencyInjection;
 
+use Exception;
 use PHPUnit\Framework\TestCase;
 use Erelke\FacebookMessengerBundle\DependencyInjection\FacebookMessengerExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -12,7 +13,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 class FacebookMessengerExtensionTest extends TestCase
 {
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function testConfigLoad()
     {
