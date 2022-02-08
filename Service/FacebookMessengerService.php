@@ -2,6 +2,7 @@
 
 namespace PouleR\FacebookMessengerBundle\Service;
 
+use Facebook\Exceptions\FacebookSDKException;
 use Facebook\Facebook;
 use Facebook\FacebookBatchRequest;
 use Facebook\FacebookResponse;
@@ -17,6 +18,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
@@ -66,7 +68,7 @@ class FacebookMessengerService
      * @param LoggerInterface $logger
      * @param Client|null     $client
      *
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
     public function __construct($appId, $appSecret, LoggerInterface $logger, Client $client = null)
     {
@@ -97,7 +99,7 @@ class FacebookMessengerService
      *
      * @return array
      *
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
     public function postMessage(Recipient $recipient, Message $message, $type = self::MSG_TYPE_RESPONSE)
     {
@@ -116,7 +118,7 @@ class FacebookMessengerService
      *
      * @return boolean
      *
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
     public function addMessageToBatch(Recipient $recipient, Message $message, $type = self::MSG_TYPE_RESPONSE)
     {
@@ -159,7 +161,7 @@ class FacebookMessengerService
 
     /**
      * @throws FacebookMessengerException
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      *
      * @return FailedMessageRequest[]
      */
@@ -198,7 +200,7 @@ class FacebookMessengerService
      *
      * @return array
      *
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
     public function getUser($id, array $fields = ['first_name', 'last_name'])
     {
@@ -215,7 +217,7 @@ class FacebookMessengerService
      *
      * @return array
      *
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
     public function getPsid($linkingToken)
     {
@@ -237,7 +239,7 @@ class FacebookMessengerService
      *
      * @return array
      *
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
     public function unlinkAccount($psid)
     {
@@ -257,7 +259,7 @@ class FacebookMessengerService
      *
      * @return array
      *
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
     public function setGreetingText(GreetingTextConfiguration $configuration)
     {
@@ -279,7 +281,7 @@ class FacebookMessengerService
      *
      * @return array
      *
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
     public function setGetStarted(GetStartedConfiguration $configuration)
     {
@@ -326,7 +328,7 @@ class FacebookMessengerService
      *
      * @return \Facebook\FacebookRequest
      *
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
     private function createMessageRequest(Recipient $recipient, Message $message, $type = self::MSG_TYPE_RESPONSE)
     {
@@ -348,11 +350,12 @@ class FacebookMessengerService
      */
     private function getSerializer($ignoredAttributes = [])
     {
-        $normalizer = new ObjectNormalizer(null, new CamelCaseToSnakeCaseNameConverter());
-        $normalizer->setIgnoredAttributes($ignoredAttributes);
-        $serializer = new Serializer([$normalizer], [new JsonEncoder()]);
+        $normalizer = new ObjectNormalizer(
+        	null, new CamelCaseToSnakeCaseNameConverter(),
+	        null, null,null,null,
+	        [AbstractNormalizer::IGNORED_ATTRIBUTES => $ignoredAttributes]);
 
-        return $serializer;
+        return new Serializer([$normalizer], [new JsonEncoder()]);
     }
 
     /**

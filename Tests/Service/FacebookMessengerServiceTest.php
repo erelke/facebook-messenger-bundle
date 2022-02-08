@@ -2,20 +2,24 @@
 
 namespace PouleR\FacebookMessengerBundle\Tests\Service;
 
+use Facebook\Exceptions\FacebookSDKException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\Psr7\Response;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use PouleR\FacebookMessengerBundle\Core\Configuration\GetStartedConfiguration;
 use PouleR\FacebookMessengerBundle\Core\Configuration\GreetingTextConfiguration;
 use PouleR\FacebookMessengerBundle\Core\Entity\Recipient;
 use PouleR\FacebookMessengerBundle\Core\Message;
+use PouleR\FacebookMessengerBundle\Exception\FacebookMessengerException;
 use PouleR\FacebookMessengerBundle\Service\FacebookMessengerService;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
+use Symfony\Component\HttpFoundation\Request as SymRequest;
 
 /**
  * Class FacebookMessengerServiceTest.
@@ -23,7 +27,7 @@ use Psr\Log\NullLogger;
 class FacebookMessengerServiceTest extends TestCase
 {
     /**
-     * @var LoggerInterface|\PHPUnit_Framework_MockObject_MockObject
+     * @var LoggerInterface|MockObject
      */
     protected $logger;
 
@@ -43,9 +47,9 @@ class FacebookMessengerServiceTest extends TestCase
     protected $messengerService;
 
     /**
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->logger = $this->createMock(LoggerInterface::class);
         $this->clientHandler = new MockHandler();
@@ -65,7 +69,7 @@ class FacebookMessengerServiceTest extends TestCase
     }
 
     /**
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
     public function testPostMessage()
     {
@@ -89,7 +93,7 @@ class FacebookMessengerServiceTest extends TestCase
     }
 
     /**
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
     public function testGetUser()
     {
@@ -110,7 +114,7 @@ class FacebookMessengerServiceTest extends TestCase
     }
 
     /**
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
     public function testGetPsid()
     {
@@ -135,7 +139,7 @@ class FacebookMessengerServiceTest extends TestCase
     }
 
     /**
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
     public function testUnlinkAccount()
     {
@@ -157,7 +161,7 @@ class FacebookMessengerServiceTest extends TestCase
     }
 
     /**
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
     public function testGetStarted()
     {
@@ -177,7 +181,7 @@ class FacebookMessengerServiceTest extends TestCase
     }
 
     /**
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
     public function testGreetingText()
     {
@@ -200,11 +204,11 @@ class FacebookMessengerServiceTest extends TestCase
     /**
      * Test if null is returned when there is no hub_mode set in the request
      *
-     * @throws \PouleR\FacebookMessengerBundle\Exception\FacebookMessengerException
+     * @throws FacebookMessengerException
      */
     public function testEmptyVerificationToken()
     {
-        $request = $this->createMock(\Symfony\Component\HttpFoundation\Request::class);
+        $request = $this->createMock(SymRequest::class);
 
         $request->expects($this->exactly(1))
             ->method('get')
@@ -217,12 +221,10 @@ class FacebookMessengerServiceTest extends TestCase
 
     /**
      * Test if an exception is thrown when the verification token is incorrect
-     *
-     * @expectedException \PouleR\FacebookMessengerBundle\Exception\FacebookMessengerException
      */
     public function testInvalidVerificationToken()
     {
-        $request = $this->createMock(\Symfony\Component\HttpFoundation\Request::class);
+        $request = $this->createMock(SymRequest::class);
 
         $request->expects($this->exactly(3))
             ->method('get')
@@ -236,18 +238,19 @@ class FacebookMessengerServiceTest extends TestCase
                 'subscribe',
                 '12345'
             );
-
+	    $this->expectException(FacebookMessengerException::class);
         $this->messengerService->handleVerificationToken($request, '98765');
     }
 
     /**
      * Test a valid verification token
      *
-     * @throws \PouleR\FacebookMessengerBundle\Exception\FacebookMessengerException
+     * @throws FacebookMessengerException
      */
     public function testValidVerificationToken()
     {
-        $request = $this->getMockBuilder(\Symfony\Component\HttpFoundation\Request::class)
+        /** @var SymRequest|MockObject $request */
+        $request = $this->getMockBuilder(SymRequest::class)
             ->disableOriginalConstructor()
             ->getMock();
 
@@ -271,31 +274,30 @@ class FacebookMessengerServiceTest extends TestCase
     }
 
     /**
-     * @throws \Facebook\Exceptions\FacebookSDKException
+     * @throws FacebookSDKException
      */
     public function testAddMessageToBatchLimit()
     {
         for ($i = 1; $i < 60; $i++) {
             $result = $this->messengerService->addMessageToBatch(new Recipient(1), new Message('test'));
-            self::assertEquals($i <= 50 ? true : false, $result);
+            self::assertEquals($i <= 50, $result);
         }
     }
 
     /**
-     * @throws \Facebook\Exceptions\FacebookSDKException
-     * @throws \PouleR\FacebookMessengerBundle\Exception\FacebookMessengerException
-     *
-     * @expectedException \PouleR\FacebookMessengerBundle\Exception\FacebookMessengerException
+     * @throws FacebookSDKException
+     * @throws FacebookMessengerException
      */
     public function testSendBatchRequestsException()
     {
+	    $this->expectException(FacebookMessengerException::class);
         // No batch requests added
         $this->messengerService->sendBatchRequests();
     }
 
     /**
-     * @throws \Facebook\Exceptions\FacebookSDKException
-     * @throws \PouleR\FacebookMessengerBundle\Exception\FacebookMessengerException
+     * @throws FacebookSDKException
+     * @throws FacebookMessengerException
      */
     public function testSendBatchRequests()
     {

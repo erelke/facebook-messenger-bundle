@@ -1,31 +1,36 @@
 {
     "name": "pouler/facebook-messenger-bundle",
     "description": "A Symfony bundle for Facebook Messenger",
-    "type": "project",
+    "type": "symfony-bundle",
     "autoload": {
         "psr-4": { "PouleR\\FacebookMessengerBundle\\": "" }
     },
     "require": {
-        "php": ">=7.0",
-        "symfony/serializer": "^3.0|^4.0",
-        "symfony/property-access": "^3.0|^4.0",
-        "symfony/framework-bundle": "^3.0|^4.0",
-        "facebook/graph-sdk": "^5.6",
-        "guzzlehttp/guzzle": "^6.3",
-        "symfony/yaml": "^3.0|^4.0"
+        "php": ">=7.1",
+        "symfony/serializer": "^3.0|^4.0|^5.0",
+        "symfony/property-access": "^3.0|^4.0|^5.0",
+        "symfony/framework-bundle": "^3.0|^4.0|^5.0",
+        "facebook/graph-sdk": "^5.7",
+        "guzzlehttp/guzzle": "^7.4",
+        "symfony/yaml": "^3.0|^4.0|^5.0"
     },
     "license": "MIT",
     "authors": [
         {
             "name": "Paul Radt",
             "email": "paulradt@gmail.com"
+        },
+        {
+            "name": "Elemér Erőss",
+            "email": "eross@korona.info.hu"
         }
     ],
     "minimum-stability": "stable",
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^1.11",
-        "squizlabs/php_codesniffer": "^2.6",
-        "php-mock/php-mock-phpunit": "^2.1",
-        "phpunit/phpunit": "^6"
+        "friendsofphp/php-cs-fixer": "^3.6",
+        "squizlabs/php_codesniffer": "^3.5",
+        "php-mock/php-mock-phpunit": "^2.6",
+        "phpunit/phpunit": "^9.5",
+        "ext-json": "*"
     }
 }
